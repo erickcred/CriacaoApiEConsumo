@@ -1,0 +1,36 @@
+@model IEnumerable<ConsumoPrimeiraApi.Models.Produto>
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+@Html.ActionLink("Novo Produto", "Cadastrar", null, null, new { @class = "btn btn-primary mb-3"})
+
+<div class="table-responsive">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Estoque</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produto in Model)
+            {
+                <tr class="">
+                    <td scope="row">@produto.Id</td>
+                    <td>@produto.Nome</td>
+                    <td>@produto.Estoque</td>
+                    <td>@produto.Categoria.Nome</td>
+                    <td>
+                        <a href="/produtos/deletar/@produto.Id" class="text-white">Excluir</a> | 
+                        <a href="/produtos/editar/@produto.Id" class="text-white">Editar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

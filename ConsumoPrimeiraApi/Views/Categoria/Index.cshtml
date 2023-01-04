@@ -1,0 +1,31 @@
+@model IEnumerable<ConsumoPrimeiraApi.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+@Html.ActionLink("Nova Categoria", "Cadastrar", null, null, new { @class = "btn btn-primary mb-3"})
+
+
+<div class="table-responsive">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var categoria in Model.OrderByDescending(x => x.Id))
+            {
+                <tr class="">
+                    <td scope="row">@categoria.Id</td>
+                    <td>@categoria.Nome</td>
+                    <td><a href="/categorias/deletar/@categoria.Id" class="text-white">Excluir</a> | 
+                    <a href="/categorias/editar/@categoria.Id" class="text-white">Editar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
